@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    background-color: rgb(210, 213, 214);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .input-box {
+    @apply w-full text-sm px-5 py-3 mt-4 mb-4 rounded
+           border border-blue-950
+           bg-transparent
+           outline-none focus:border-blue-500;
+         
+  }
+
+  .btn-primary {
+    @apply w-full text-sm bg-[#2b85ff] text-white p-2 rounded my-1
+           hover:bg-blue-700 transition;
+  }
+
+  .icon-btn {
+    @apply text-xl text-slate-300 cursor-pointer
+           hover:text-[#2b85ff] transition;
+  }
+
+  .input-label{
+    @apply text-xs text-slate-400;
+  }
+}
