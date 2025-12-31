@@ -26,8 +26,7 @@
   }
 
   .icon-btn {
-    @apply text-xl text-slate-300 cursor-pointer
-           hover:text-[#2b85ff] transition;
+    @apply text-xl text-slate-400 cursor-pointer transition;
   }
 
   .input-label{
