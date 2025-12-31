@@ -21,10 +21,11 @@ const Navbar = () => {
 
   return (
     <div className="bg-amber-200 flex items-center justify-between px-6 py-2 drop-shadow">
+     <Link to={"/"}>
       <h2 className='text-xl font-medium text-black py-2'> 
         <span className="text-slate-800">snap</span>
         <span className="text-slate-600">Notes</span>
-      </h2>
+      </h2></Link>
 
       <SearchBar 
         value={searchQuery} 
