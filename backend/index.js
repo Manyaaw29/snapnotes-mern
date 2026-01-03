@@ -18,7 +18,7 @@ const app = express();
 // converting input to json 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: ['http://localhost:5173'], credentials: true }));
 
 //using routes here
 app.use('/api/auth', authRouter);
