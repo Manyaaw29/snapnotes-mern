@@ -2,13 +2,15 @@ import React from "react";
 import PasswordInput from "../../components/Input/PasswordInput";
 import { Link } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [Error, setError] = React.useState("");
   const[name, setName] = React.useState("");
-
+  const navigate = useNavigate();
   const handleSignup = async (e) => {
     e.preventDefault();
 
@@ -30,8 +32,27 @@ const Signup = () => {
     setError("");
 
     // Signup API
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/signup",
+        { username: name, email, password },
+        { withCredentials: true }
+      );
+      if(response.data.success===false) {
+        setError(response.data.message);
+        return;
+
+      }
+      setError("");
+      navigate("/login");
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+    }
   };
   return (
+  <>
     <div className="flex items-center justify-center mt-28">
       <div className="w-96 border border-slate-700 rounded bg-white px-7 py-10">
         <form onSubmit={handleSignup}>
@@ -76,6 +97,7 @@ const Signup = () => {
         </form>
       </div>
     </div>
+  </>
   );
 };
 export default Signup;

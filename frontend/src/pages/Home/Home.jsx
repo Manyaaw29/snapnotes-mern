@@ -3,75 +3,68 @@ import NoteCard from "../../components/Cards/NoteCard";
 import { MdAdd } from "react-icons/md";
 import Modal from "react-modal";
 import AddEditNotes from "./AddEditNotes";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
+
 
 const Home = () => {
+  const { currentUser, loading, errorDispatch } = useSelector(
+    (state) => state.user
+  );
+
+  const [userInfo, setUserInfo] = useState(null);
+  const [allNotes, setAllNotes] = useState([]);
+
+  const navigate = useNavigate();
   const [openAddEditModal, setOpenAddEditModal] = React.useState({
     isOpen: false,
     type: "add",
     data: null,
   });
+
+  useEffect(() => {
+    if (currentUser === null || !currentUser) {
+      navigate("/login");
+    } else {
+      setUserInfo(currentUser);
+      getAllNotes();
+    }
+  }, []);
+
+  // get all notes
+
+  const getAllNotes = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/notes/all", {
+        withCredentials: true,
+      });
+      if (response.data.success === false) {
+        console.log("Failed to fetch notes");
+        return;
+      }
+      setAllNotes(response.data.notes);
+    } catch (error) {}
+  };
   return (
     <>
+      <Navbar userInfo={userInfo} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
-          <NoteCard
-            title={"wake up at 6"}
-            date={"30th January 2025"}
-            content={
-              "Remember to set an alarm for 6 AM and have a healthy breakfast"
-            }
-            tags={"morning,routine"}
-          />
-          <NoteCard
-            title={"meeting with team"}
-            date={"31st January 2025"}
-            content={
-              "Discuss project milestones and deadlines and assign tasks"
-            }
-            tags={"work,meeting"}
-          />
-          <NoteCard
-            title={"grocery shopping"}
-            date={"1st February 2025"}
-            content={"Buy milk, eggs, and bread and also to get some fruits"}
-            tags={"shopping,errands"}
-          />
-          <NoteCard
-            title={"doctor appointment"}
-            date={"2nd February 2025"}
-            content={"Annual check-up at 10 AM"}
-            tags={"health,appointment"}
-          />
-          <NoteCard
-            title={"exercise"}
-            date={"3rd February 2025"}
-            content={"Go for a 30-minute run"}
-            tags={"fitness,health"}
-          />
-          <NoteCard
-            title={"read book"}
-            date={"4th February 2025"}
-            content={"Read 50 pages of a novel"}
-            tags={"leisure,reading"}
-          />
-          <NoteCard
-            title={"call mom"}
-            date={"5th February 2025"}
-            content={"Catch up with mom on the phone"}
-            tags={"family,communication"}
-          />
-          <NoteCard
-            title={"pay bills"}
-            date={"6th February 2025"}
-            content={"Pay electricity and internet bills"}
-            tags={"finance,errands"}
-          />
-          <NoteCard
-            title={"plan vacation"}
-            date={"7th February 2025"}
-            content={"Research destinations and book flights"}
-            tags={"travel,planning"}
-          />
+          {allNotes.map((note) => (
+            <NoteCard
+              key={note._id}
+              title={note.title}
+              date={note.createdAt}
+              content={note.content}
+              tags={note.tags}
+              isPinned={note.isPinned}
+              onEdit={() => {}}
+              onDelete={() => {}}
+              onPinNote={() => {}}
+            />
+          ))}
         </div>
       </div>
 
@@ -99,7 +92,7 @@ const Home = () => {
           onClose={() =>
             setOpenAddEditModal({ isOpen: false, type: "add", data: null })
           }
-          noteData= {openAddEditModal.data}
+          noteData={openAddEditModal.data}
           type={openAddEditModal.type}
         />
       </Modal>

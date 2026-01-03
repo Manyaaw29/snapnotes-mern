@@ -43,7 +43,7 @@ const Login = () => {
         { withCredentials: true }
       );
       
-      dispatch(signInSuccess(response.data));
+      dispatch(signInSuccess(response.data.rest));
       navigate("/");
     } catch (error) {
       console.log(error);
