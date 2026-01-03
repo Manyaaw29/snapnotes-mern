@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import authRouter from './routes/auth.route.js';
+import noteRouter from './routes/note.route.js';
 
 dotenv.config();
 mongoose.connect(process.env.MONGO_URI).then(() => {
@@ -21,6 +22,7 @@ app.use(cors({ origin: '*' }));
 
 //using routes here
 app.use('/api/auth', authRouter);
+app.use('/api/note', noteRouter);
 
 //error handling 
 app.use((err,req,res,next)=>{

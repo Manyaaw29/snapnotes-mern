@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { createDeflate } from 'zlib';
+
 const userSchema = new mongoose.Schema({
     username:{
         type: String,
