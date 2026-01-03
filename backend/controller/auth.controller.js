@@ -1,5 +1,5 @@
 import User from '../models/user.model.js';
-import { errorHandler } from '../utils/error.js';
+import { errorHandler } from '../utils/errorHandler.js';
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -54,4 +54,17 @@ export const signin = async (req, res, next) => {
         next(error);
 
     }
+}
+
+export const signout = async (req, res, next) => {
+    try {
+        res.clearCookie("access_token").status(200).json({
+            success: true,
+            message: "User signed out successfully!",
+        });
+        
+    } catch (error) {
+        next(error);
+    }
+   
 }
