@@ -4,6 +4,11 @@ A simple and elegant note-taking application where you can create, edit, search,
 
 > **Learning Project**: This is a beginner-friendly project built to understand the fundamentals of full-stack development, including user authentication, REST API creation, and frontend-backend integration.
 
+## 🌐 Live Demo
+
+**Frontend:** [https://snapnotes-mern.onrender.com](https://snapnotes-mern.onrender.com)  
+**Backend API:** [https://snapnotes-mern-backend.onrender.com](https://snapnotes-mern-backend.onrender.com)
+
 ## 💡 What I Learned
 
 - Building a complete REST API from scratch using Node.js and Express
