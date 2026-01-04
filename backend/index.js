@@ -18,13 +18,11 @@ const app = express();
 // converting input to json 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: ['http://localhost:5173'], credentials: true }));
+app.use(cors({ origin: [process.env.FRONTEND_URL || 'http://localhost:5173'], credentials: true }));
 
-//using routes here
 app.use('/api/auth', authRouter);
 app.use('/api/notes', noteRouter);
 
-//error handling 
 app.use((err,req,res,next)=>{
   const statusCode = err.statusCode || 500;
   const message= err.message || "Internal Server Error";
@@ -36,6 +34,7 @@ app.use((err,req,res,next)=>{
   });
 })
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
