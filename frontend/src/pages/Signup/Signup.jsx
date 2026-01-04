@@ -5,12 +5,13 @@ import { validateEmail } from "../../utils/helper";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
   import { toast } from 'react-toastify';
+  import {useState} from 'react';
 
 const Signup = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [Error, setError] = React.useState("");
-  const[name, setName] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [Error, setError] = useState("");
+  const[name, setName] = useState("");
   const navigate = useNavigate();
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -57,52 +58,63 @@ const Signup = () => {
     }
   };
   return (
-  <>
-    <div className="flex items-center justify-center mt-28">
-      <div className="w-96 border border-slate-700 rounded bg-white px-7 py-10">
-        <form onSubmit={handleSignup}>
-          <h2 className="text-2xl mb-7"> Sign Up </h2>
-           <input
-            type="text"
-            placeholder="Name"
-            className="input-box "
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Email"
-            className="input-box "
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <PasswordInput
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+    <div className="flex h-screen">
+      {/* Left Side - Signup Form */}
+      <div className="w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-purple-50">
+        <div className="w-96 px-10 py-12 bg-white rounded-2xl shadow-2xl border border-purple-100">
+          <form onSubmit={handleSignup}>
+            <h2 className="text-3xl font-bold mb-2 text-gray-800"> Get Started! </h2>
+            <p className="text-gray-600 mb-7">Create your account to begin</p>
+            
+            <input
+              type="text"
+              placeholder="Name"
+              className="input-box "
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Email"
+              className="input-box "
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <PasswordInput
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-          {Error && <p className="text-sm text-red-500 pb-1"> {Error} </p>}
+            {Error && <p className="text-sm text-red-500 pb-1"> {Error} </p>}
 
-          <button type="submit" className="btn-primary ">
-            {" "}
-            Sign Up{" "}
-          </button>
-
-          <p className="text-sm text-center mt-4">
-            {" "}
-            Already have an account? {"  "}
-            <Link
-              to={"/login"}
-              className="font-medium text-[#2b85ff] underline"
-            >
+            <button type="submit" className="btn-primary ">
               {" "}
-              Login
-            </Link>
-          </p>
-        </form>
+              Sign Up{" "}
+            </button>
+
+            <p className="text-sm text-center mt-4">
+              {" "}
+              Already have an account? {"  "}
+              <Link
+                to="/login"
+                className="font-medium text-[#2b85ff] underline"
+              >
+                {" "}
+                Login
+              </Link>
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <div className="w-1/2 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 flex items-center justify-center">
+        <div className="text-center text-white px-12">
+          <h1 className="text-5xl font-bold mb-4">📝 snapNotes</h1>
+          <p className="text-xl mb-8">Organize your thoughts, one note at a time</p>
+          <div className="text-7xl">🚀</div>
+        </div>
       </div>
     </div>
-  </>
   );
 };
 export default Signup;

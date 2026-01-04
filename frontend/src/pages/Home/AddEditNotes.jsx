@@ -76,26 +76,35 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
   return (
     <div className="relative">
       <button
-        className="w-10 h-10 rounded-full flex items-center justify-center absolute -top-3 -right-3 hover:bg-slate-50"
+        className="w-10 h-10 rounded-full flex items-center justify-center absolute -top-5 -right-5 bg-red-500 hover:bg-red-600 transition-colors shadow-lg"
         onClick={onClose}
       >
-        <MdClose className="text-xl text-slate-400" />
+        <MdClose className="text-xl text-white" />
       </button>
-      <div className="flex flex-col gap-2 mt-2 ">
-        <label className="input-label  text-red-400 uppercase"> Title </label>
+      
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-gray-800">
+          {type === "edit" ? "Edit Note" : "Add New Note"}
+        </h2>
+        <p className="text-sm text-gray-500 mt-1">Fill in the details below</p>
+      </div>
+
+      <div className="flex flex-col gap-2 mt-4">
+        <label className="text-xs font-semibold text-gray-700 uppercase tracking-wide">Title</label>
         <input
           type="text"
-          className="text-xl text-slate-950 outline-none bg-slate-100"
-          placeholder="Title here..."
+          className="text-lg text-gray-900 outline-none bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+          placeholder="Enter title..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
-      <div className="flex flex-col gap-2 mt-4">
-        <label className="input-label  text-red-400 uppercase"> Content </label>
+      
+      <div className="flex flex-col gap-2 mt-5">
+        <label className="text-xs font-semibold text-gray-700 uppercase tracking-wide">Content</label>
         <textarea
-          className="text-sm text-slate-950 outline-none bg-slate-100 p-2 rounded"
-          placeholder="Description Here..."
+          className="text-sm text-gray-900 outline-none bg-blue-50 border border-blue-200 rounded-lg p-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
+          placeholder="Write your note content here..."
           rows={10}
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -104,19 +113,19 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
         </textarea>
       </div>
 
-      <div className="flex flex-col gap-2 mt-4">
-        <label className="input-label  text-red-400 uppercase"> Tags </label>
+      <div className="flex flex-col gap-2 mt-5">
+        <label className="text-xs font-semibold text-gray-700 uppercase tracking-wide">Tags</label>
         <TagInput tags={tags} setTags={setTags} />
       </div>
-      {Error && <p className="text-xs text-red-500 pt-4"> {Error} </p>}
+      
+      {Error && <p className="text-sm text-red-600 bg-red-50 px-4 py-2 rounded-lg mt-4 border border-red-200">{Error}</p>}
+      
       <button
-        className="btn-primary font-medium mt-5 p-3"
+        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 rounded-lg mt-6 transition-all shadow-md hover:shadow-lg"
         onClick={handleAddNote}
       >
-        
-        {type === "edit" ? "EDIT" : "ADD"}
+        {type === "edit" ? "Update Note" : "Add Note"}
       </button>
-      
     </div>
   );
 };

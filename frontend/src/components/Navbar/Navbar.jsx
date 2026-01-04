@@ -41,20 +41,26 @@ const onLogout = async () => {
     dispatch(signoutSuccess());
     navigate("/login");
   } catch (error) {
-    toast.error("Logout failed: " + error.message);
-    dispatch(signoutFailure(error.message));
-    
+    // If token is expired (401), still logout from frontend
+    if (error.response && error.response.status === 401) {
+      toast.success("Logged out successfully");
+      dispatch(signoutSuccess());
+      navigate("/login");
+    } else {
+      toast.error("Logout failed: " + error.message);
+      dispatch(signoutFailure(error.message));
+    }
   }
 };
 
 
 
   return (
-    <div className="bg-amber-200 flex items-center justify-between px-6 py-2 drop-shadow">
-      <Link to={"/"}>
-        <h2 className="text-xl font-medium text-black py-2">
-          <span className="text-slate-800">snap</span>
-          <span className="text-slate-600">Notes</span>
+    <div className="bg-gradient-to-r from-slate-800 via-blue-900 to-slate-800 flex items-center justify-between px-8 py-3 shadow-xl border-b border-blue-800/30">
+      <Link to="/">
+        <h2 className="text-2xl font-bold text-white py-2 hover:scale-105 transition-transform cursor-pointer">
+          <span className="text-blue-400">snap</span>
+          <span className="text-white">Notes</span>
         </h2>
       </Link>
 

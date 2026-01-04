@@ -50,7 +50,12 @@ const Home = () => {
         return;
       }
       setAllNotes(response.data.notes);
-    } catch (error) {}
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        toast.error("Session expired. Please login again.");
+        navigate("/login");
+      }
+    }
   };
 
   const handleEdit = (noteDetails) => {
@@ -128,9 +133,9 @@ const Home = () => {
   return (
     <>
       <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch} />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10">
+      <div className="px-8 pt-10 pb-20 min-h-screen bg-gradient-to-br from-slate-100 to-blue-100">
       {allNotes.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {allNotes.map((note) => (
             <NoteCard
               key={note._id}
@@ -155,7 +160,7 @@ const Home = () => {
         <EmptyCard  
           imgSrc={
             isSearch 
-              ? "https://cdni.iconscout.com/illustration/premium/thumb/no-search-result-found-illustration-download-in-svg-png-gif-file-formats--not-data-empty-state-pack-user-interface-illustrations-6024626.png"
+              ? "https://hvpnvn.edu.vn/wp-content/uploads/2023/11/no-data-found-8867280-7265556.png"
               : "https://cdni.iconscout.com/illustration/premium/thumb/male-standing-with-empty-notes-illustration-svg-download-png-10920966.png"
           } 
           message={
@@ -168,7 +173,7 @@ const Home = () => {
       </div>
 
       <button
-        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-[#2b85ff] hover:bg-blue-600  absolute right-10 bottom-10 fixed "
+        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all absolute right-10 bottom-10 fixed "
         onClick={() =>
           setOpenAddEditModal({ isOpen: true, type: "add", data: null })
         }
@@ -181,11 +186,11 @@ const Home = () => {
         onRequestClose={() => {}}
         style={{
           overlay: {
-            backgroundColor: "rgba(0,0,0,0.2)",
+            backgroundColor: "rgba(0,0,0,0.5)",
           },
         }}
         contentLabel=""
-        className="w-[40%] max-md:w-[60%] max-sm:w-[70%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-scroll "
+        className="w-[45%] max-md:w-[65%] max-sm:w-[85%] max-h-[85vh] bg-white rounded-2xl mx-auto mt-14 p-8 overflow-scroll shadow-2xl border border-gray-200"
       >
         <AddEditNotes
           onClose={() =>
