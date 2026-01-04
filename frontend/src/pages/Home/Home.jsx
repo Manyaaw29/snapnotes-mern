@@ -10,6 +10,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import axios, { all } from "axios";
 import { toast } from "react-toastify";
 import EmptyCard from "../../components/EmptyCard/EmptyCard";
+import { set } from "mongoose";
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
     (state) => state.user
   );
 
+  const [isSearch, setIsSearch] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [allNotes, setAllNotes] = useState([]);
 
@@ -76,12 +78,58 @@ const Home = () => {
       toast(error.message);
     }
   };
+
+  const onSearchNote = async (query) => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/api/notes/search",
+          { 
+            params: { query },
+            withCredentials: true 
+          }
+        );
+        if (response.data.success === false) {
+          toast.error(response.data.message);
+          return;
+        }
+        toast.success("Search completed");
+
+        setAllNotes(response.data.notes);
+        setIsSearch(true);
+      } catch (error) {
+        toast.error(error.message);   
+      }
+  }
+
+  const handleClearSearch = () => {
+    setIsSearch(false);
+    getAllNotes();
+  };
+
+  const updateIsPinned = async(noteData) => {
+    const noteId= noteData._id;
+    try {
+      const response = await axios.put(
+        "http://localhost:3000/api/notes/updateNotePin/" + noteId,
+        { isPinned: !noteData.isPinned },
+        { withCredentials: true }
+      );
+      if (response.data.success === false) {
+        toast.error(response.data.message);
+        return;
+      }
+      toast.success("Note pin status updated successfully");
+      getAllNotes();
+    } catch (error) {
+      toast.error("Failed to update pin status: " + error.message);
+      
+    }
+  }
   return (
     <>
-      <Navbar userInfo={userInfo} />
+      <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10">
-      {allNotes.length === 0 ?
-      (
+      {allNotes.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
           {allNotes.map((note) => (
             <NoteCard
@@ -97,11 +145,26 @@ const Home = () => {
               onDelete={() => {
                 deleteNote(note);
               }}
-              onPinNote={() => {}}
+              onPinNote={() => {
+                updateIsPinned(note);
+              }}
             />
           ))}
         </div>
-      ) :<EmptyCard  imgSrc={"https://cdni.iconscout.com/illustration/premium/thumb/male-standing-with-empty-notes-illustration-svg-download-png-10920966.png"} message={"Nothing here yet, but every great idea starts with a single note—add yours and begin."} /> }
+      ) : (
+        <EmptyCard  
+          imgSrc={
+            isSearch 
+              ? "https://cdni.iconscout.com/illustration/premium/thumb/no-search-result-found-illustration-download-in-svg-png-gif-file-formats--not-data-empty-state-pack-user-interface-illustrations-6024626.png"
+              : "https://cdni.iconscout.com/illustration/premium/thumb/male-standing-with-empty-notes-illustration-svg-download-png-10920966.png"
+          } 
+          message={
+            isSearch 
+              ? "Oops! No notes found matching your search." 
+              : "Nothing here yet, but every great idea starts with a single note—add yours and begin."
+          } 
+        /> 
+      )}
       </div>
 
       <button

@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io'
 const SearchBar = (props) => {
   console.log("SearchBar props:", props);
   
-  const { value, onChange, onClearSearch } = props;
+  const { value, onChange, handleSearch, onClearSearch } = props;
   
   console.log("value:", value);
   console.log("onChange:", onChange);
@@ -28,6 +28,7 @@ const SearchBar = (props) => {
       )}
       <FaMagnifyingGlass 
         className='text-slate-500 text-xl cursor-pointer hover:text-black mr-3' 
+        onClick={handleSearch}
       />
     </div>
   )

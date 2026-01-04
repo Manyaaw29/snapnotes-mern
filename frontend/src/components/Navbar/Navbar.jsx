@@ -6,18 +6,21 @@ import { useDispatch } from "react-redux";
 import { signoutStart, signoutSuccess, signoutFailure } from "../../redux/user/userSlice";
 import axios from "axios";
  import {toast } from 'react-toastify';
-const Navbar = ({ userInfo }) => {
+const Navbar = ({ userInfo , onSearchNote, handleClearSearch}) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+  const handleSearch = () => {
+    if (searchQuery) {
+      onSearchNote(searchQuery);
+    }
   };
 
   const onClearSearch = () => {
     setSearchQuery("");
+    handleClearSearch();
   };
 
 const onLogout = async () => {
@@ -57,7 +60,8 @@ const onLogout = async () => {
 
       <SearchBar
         value={searchQuery}
-        onChange={handleSearch}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        handleSearch={handleSearch}
         onClearSearch={onClearSearch}
       />
 
