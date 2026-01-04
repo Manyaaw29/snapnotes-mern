@@ -14,10 +14,10 @@ const NoteCard = ({
 }) => {
   
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all ease-in-out border-l-4 border-l-blue-500 dark:border-l-blue-400">
+    <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all ease-in-out border-l-4 border-l-blue-500">
       <div className="flex items-center justify-between">
         <div>
-          <h6 className="text-lg font-bold text-gray-900 dark:text-gray-100">{title}</h6>
+          <h6 className="text-lg font-bold text-gray-900">{title}</h6>
           <span className="text-xs text-blue-600 font-semibold px-2 py-0.5 bg-blue-50 rounded-md flex items-center gap-1 w-fit">
             <MdCalendarToday className="text-xs" />
             {moment(date).format("Do MMMM YYYY")}
@@ -31,13 +31,13 @@ const NoteCard = ({
         />
       </div>
 
-      <p className="text-sm text-gray-700 dark:text-gray-300 mt-4 leading-relaxed">
+      <p className="text-sm text-gray-700 mt-4 leading-relaxed">
         {content ? content.slice(0, 80) : ""}
       </p>
       <div className="flex items-center justify-between mt-5">
         <div className="flex gap-2 flex-wrap">
           {tags.map((item, index) => (
-            <span key={index} className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full font-medium">
+            <span key={index} className="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">
               #{item}
             </span>
           ))}
