@@ -132,8 +132,7 @@ const Home = () => {
   return (
     <>
       <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch} />
-      <div className="px-8 pt-10 pb-20 min-h-screen bg-gradient-to-br from-slate-100 to-blue-100">
-      {allNotes.length > 0 ? (
+      <div className="px-8 pt-10 pb-20 min-h-screen bg-gradient-to-br from-slate-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">\n      {allNotes.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {allNotes.map((note) => (
             <NoteCard
@@ -189,7 +188,7 @@ const Home = () => {
           },
         }}
         contentLabel=""
-        className="w-[45%] max-md:w-[65%] max-sm:w-[85%] max-h-[85vh] bg-white rounded-2xl mx-auto mt-14 p-8 overflow-scroll shadow-2xl border border-gray-200"
+        className="w-[45%] max-md:w-[65%] max-sm:w-[85%] max-h-[85vh] bg-white dark:bg-gray-800 rounded-2xl mx-auto mt-14 p-8 overflow-scroll shadow-2xl border border-gray-200 dark:border-gray-700"
       >
         <AddEditNotes
           onClose={() =>

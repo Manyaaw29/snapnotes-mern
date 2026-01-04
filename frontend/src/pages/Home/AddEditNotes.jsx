@@ -90,10 +90,10 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
       </div>
 
       <div className="flex flex-col gap-2 mt-4">
-        <label className="text-xs font-semibold text-gray-700 uppercase tracking-wide">Title</label>
+        <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">Title</label>
         <input
           type="text"
-          className="text-lg text-gray-900 outline-none bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+          className="text-lg text-gray-900 dark:text-gray-100 outline-none bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 transition-all"
           placeholder="Enter title..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -101,9 +101,9 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
       </div>
       
       <div className="flex flex-col gap-2 mt-5">
-        <label className="text-xs font-semibold text-gray-700 uppercase tracking-wide">Content</label>
+        <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">Content</label>
         <textarea
-          className="text-sm text-gray-900 outline-none bg-blue-50 border border-blue-200 rounded-lg p-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
+          className="text-sm text-gray-900 dark:text-gray-100 outline-none bg-blue-50 dark:bg-gray-700 border border-blue-200 dark:border-gray-600 rounded-lg p-4 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-800 transition-all resize-none"
           placeholder="Write your note content here..."
           rows={10}
           value={content}
@@ -114,7 +114,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
       </div>
 
       <div className="flex flex-col gap-2 mt-5">
-        <label className="text-xs font-semibold text-gray-700 uppercase tracking-wide">Tags</label>
+        <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">Tags</label>
         <TagInput tags={tags} setTags={setTags} />
       </div>
       
