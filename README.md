@@ -6,8 +6,8 @@ A simple and elegant note-taking application where you can create, edit, search,
 
 ## 🌐 Live Demo
 
-**Frontend:** [https://snapnotes-mern.onrender.com](https://snapnotes-mern.onrender.com)  
-**Backend API:** [https://snapnotes-mern-backend.onrender.com](https://snapnotes-mern-backend.onrender.com)
+**Website:** [https://snapnotes-mern.onrender.com](https://snapnotes-mern.onrender.com)  
+
 
 ## 💡 What I Learned
 
