@@ -15,7 +15,7 @@ const SearchBar = (props) => {
     <div className='w-40 sm:w-60 md:w-80 flex items-center px-4 bg-slate-100 rounded-md mt-2'>
       <input 
         type="text" 
-        placeholder="Search Notes..." 
+        placeholder="Search by title, content or tags..." 
         className="w-full text-xs bg-transparent py-[14px] outline-none" 
         value={value || ""} 
         onChange={onChange}

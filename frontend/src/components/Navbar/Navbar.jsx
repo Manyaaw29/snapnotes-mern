@@ -57,7 +57,12 @@ const onLogout = async () => {
 
   return (
     <div className="bg-gradient-to-r from-slate-800 via-blue-900 to-slate-800 flex items-center justify-between px-8 py-3 shadow-xl border-b border-blue-800/30">
-      <Link to="/">
+      <Link to="/" className="flex items-center gap-3">
+        <img 
+          src="https://static.thenounproject.com/png/1593254-200.png" 
+          alt="Logo" 
+          className="w-8 h-8"
+        />
         <h2 className="text-2xl font-bold text-white py-2 hover:scale-105 transition-transform cursor-pointer">
           <span className="text-blue-400">snap</span>
           <span className="text-white">Notes</span>
