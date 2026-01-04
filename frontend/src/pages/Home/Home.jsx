@@ -7,6 +7,9 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
+import axios, { all } from "axios";
+import { toast } from "react-toastify";
+import EmptyCard from "../../components/EmptyCard/EmptyCard";
 
 
 const Home = () => {
@@ -47,11 +50,39 @@ const Home = () => {
       setAllNotes(response.data.notes);
     } catch (error) {}
   };
+
+  const handleEdit = (noteDetails) => {
+    setOpenAddEditModal({ isOpen: true, type: "edit", data: noteDetails });
+  }
+
+  //delete note
+
+  const deleteNote = async (data) => {
+    const noteId = data._id;
+    try {
+      const response = await axios.delete(
+        "http://localhost:3000/api/notes/delete/" + noteId,
+        { withCredentials: true }
+      );
+      if (response.data.success === false) {
+        toast.error("Failed to delete note");
+        return;
+      }
+
+      toast.success("Note deleted successfully");
+      getAllNotes();
+
+    } catch (error) {
+      toast(error.message);
+    }
+  };
   return (
     <>
       <Navbar userInfo={userInfo} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
+      {allNotes.length === 0 ?
+      (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
           {allNotes.map((note) => (
             <NoteCard
               key={note._id}
@@ -60,12 +91,17 @@ const Home = () => {
               content={note.content}
               tags={note.tags}
               isPinned={note.isPinned}
-              onEdit={() => {}}
-              onDelete={() => {}}
+              onEdit={() => {
+                handleEdit(note);
+              }}
+              onDelete={() => {
+                deleteNote(note);
+              }}
               onPinNote={() => {}}
             />
           ))}
         </div>
+      ) :<EmptyCard  imgSrc={"https://cdni.iconscout.com/illustration/premium/thumb/male-standing-with-empty-notes-illustration-svg-download-png-10920966.png"} message={"Nothing here yet, but every great idea starts with a single note—add yours and begin."} /> }
       </div>
 
       <button
@@ -94,6 +130,7 @@ const Home = () => {
           }
           noteData={openAddEditModal.data}
           type={openAddEditModal.type}
+          getAllNotes={getAllNotes}
         />
       </Modal>
     </>

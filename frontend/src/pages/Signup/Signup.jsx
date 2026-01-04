@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+  import { toast } from 'react-toastify';
 
 const Signup = () => {
   const [email, setEmail] = React.useState("");
@@ -38,15 +39,19 @@ const Signup = () => {
         "http://localhost:3000/api/auth/signup",
         { username: name, email, password },
         { withCredentials: true }
+
       );
       if(response.data.success===false) {
         setError(response.data.message);
+        toast.error(response.data.message);
         return;
 
       }
+      toast.success("Signed up successfully");
       setError("");
       navigate("/login");
     } catch (error) {
+      toast.error("Signup failed: " + (error.response?.data?.message || error.message));
       console.log(error.message);
       setError(error.message);
     }

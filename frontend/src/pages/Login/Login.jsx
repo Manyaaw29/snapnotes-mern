@@ -9,7 +9,7 @@ import {
   signInSuccess,
 } from "../../redux/user/userSlice";
 import axios from "axios";
-
+ import {  toast } from 'react-toastify';
 
 const Login = () => {
   const [email, setEmail] = React.useState("");
@@ -42,12 +42,14 @@ const Login = () => {
         { email, password },
         { withCredentials: true }
       );
-      
+      toast.success("Logged in successfully");
       dispatch(signInSuccess(response.data.rest));
       navigate("/");
     } catch (error) {
+      toast.error("Login failed: " + (error.response?.data?.message || error.message));
       console.log(error);
       dispatch(signinFailure(error.response?.data?.message || error.message));
+      
       setError(error.response?.data?.message || "Login failed");
     }
   };

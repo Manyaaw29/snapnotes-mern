@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar.jsx'
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'  
+ import { ToastContainer, toast } from 'react-toastify';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="/signup" element={<Signup/>} />
   
       </Routes>
+      <ToastContainer position="top-center" />
     </BrowserRouter>  
   )
 }
