@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 export const signup = async (req, res, next) => {
     const { username, email, password } = req.body;
 
-    const isValidUser = await User.findOne({ email });
+    const isValidUser = await User.findOne({ email: email.toLowerCase() });
 
     if (isValidUser) {
         return next(errorHandler(400, "User already exists"));
@@ -15,7 +15,7 @@ export const signup = async (req, res, next) => {
     const hashedPassword = bcryptjs.hashSync(password, 10);
     const newUser = new User({
         username,
-        email,
+        email: email.toLowerCase(),
         password: hashedPassword,
     }); try {
         await newUser.save();
@@ -32,7 +32,7 @@ export const signin = async (req, res, next) => {
     const { email, password } = req.body;
 
     try {
-        const validUser = await User.findOne({ email });
+        const validUser = await User.findOne({ email: email.toLowerCase() });
         if (!validUser) {
             return next(errorHandler(404, "User not found"));
         }
@@ -68,3 +68,28 @@ export const signout = async (req, res, next) => {
     }
    
 }
+export const searchNote = async (req, res, next) => {
+  const { query } = req.query;
+
+  if (!query) {
+    return next(errorHandler(400, "Query parameter is required"));
+  }
+
+  try {
+    const matchingNotes = await Note.find({
+      userId: req.user.id,
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { content: { $regex: query, $options: "i" } },
+      ],
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Notes matching the search query retrieved successfully",
+      notes: matchingNotes,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

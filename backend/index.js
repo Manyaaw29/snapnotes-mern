@@ -22,7 +22,7 @@ app.use(cors({ origin: ['http://localhost:5173'], credentials: true }));
 
 //using routes here
 app.use('/api/auth', authRouter);
-app.use('/api/note', noteRouter);
+app.use('/api/notes', noteRouter);
 
 //error handling 
 app.use((err,req,res,next)=>{
