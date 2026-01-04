@@ -142,6 +142,7 @@ export const searchNote = async (req, res, next) => {
       $or: [
         { title: { $regex: query, $options: "i" } },
         { content: { $regex: query, $options: "i" } },
+        { tags: { $regex: query, $options: "i" } },
       ],
     });
 
