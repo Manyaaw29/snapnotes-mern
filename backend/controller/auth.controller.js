@@ -68,28 +68,3 @@ export const signout = async (req, res, next) => {
     }
    
 }
-export const searchNote = async (req, res, next) => {
-  const { query } = req.query;
-
-  if (!query) {
-    return next(errorHandler(400, "Query parameter is required"));
-  }
-
-  try {
-    const matchingNotes = await Note.find({
-      userId: req.user.id,
-      $or: [
-        { title: { $regex: query, $options: "i" } },
-        { content: { $regex: query, $options: "i" } },
-      ],
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "Notes matching the search query retrieved successfully",
-      notes: matchingNotes,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
