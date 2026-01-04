@@ -118,7 +118,7 @@ snapnotes/
 3. **Create Notes** - Click the "+" button to add a new note
 4. **Add Tags** - Organize notes with tags
 5. **Pin Notes** - Keep important notes at the top
-6. **Search** - Find notes quickly by title or tags
+6. **Search** - Find notes quickly by title or content
 7. **Edit/Delete** - Manage your notes easily
 
 ## 🔒 Authentication
