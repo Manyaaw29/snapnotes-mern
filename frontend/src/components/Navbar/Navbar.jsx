@@ -5,7 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signoutStart, signoutSuccess, signoutFailure } from "../../redux/user/userSlice";
 import axios from "axios";
-
+ import {toast } from 'react-toastify';
 const Navbar = ({ userInfo }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -31,13 +31,16 @@ const onLogout = async () => {
 
     if (response.data.success === false) {
       dispatch(signoutFailure("Logout failed"));
+      toast.error(response.data.message);
       return;
     }
-
+    toast.success("Logged out successfully");
     dispatch(signoutSuccess());
     navigate("/login");
   } catch (error) {
+    toast.error("Logout failed: " + error.message);
     dispatch(signoutFailure(error.message));
+    
   }
 };
 
