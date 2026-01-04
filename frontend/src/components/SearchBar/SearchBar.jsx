@@ -12,11 +12,11 @@ const SearchBar = (props) => {
   console.log("onClearSearch:", onClearSearch);
   
   return (
-    <div className='w-40 sm:w-60 md:w-80 flex items-center px-4 bg-slate-100 dark:bg-gray-700 rounded-md mt-2'>
+    <div className='w-40 sm:w-60 md:w-80 flex items-center px-4 bg-slate-100 rounded-md mt-2'>
       <input 
         type="text" 
         placeholder="Search by title, content or tags..." 
-        className="w-full text-xs bg-transparent dark:text-gray-200 py-[14px] outline-none dark:placeholder-gray-400" 
+        className="w-full text-xs bg-transparent py-[14px] outline-none" 
         value={value || ""} 
         onChange={onChange}
         onKeyDown={(e) => {
