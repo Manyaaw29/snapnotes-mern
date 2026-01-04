@@ -59,7 +59,7 @@ const onLogout = async () => {
     <div className="bg-gradient-to-r from-slate-800 via-blue-900 to-slate-800 flex items-center justify-between px-8 py-3 shadow-xl border-b border-blue-800/30">
       <Link to="/" className="flex items-center gap-3">
         <img 
-          src="https://static.thenounproject.com/png/1593254-200.png" 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Paper-notes.svg/2048px-Paper-notes.svg.png" 
           alt="Logo" 
           className="w-8 h-8"
         />
