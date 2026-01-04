@@ -2,6 +2,17 @@
 
 A simple and elegant note-taking application where you can create, edit, search, and organize your notes efficiently.
 
+> **Learning Project**: This is a beginner-friendly project built to understand the fundamentals of full-stack development, including user authentication, REST API creation, and frontend-backend integration.
+
+## 💡 What I Learned
+
+- Building a complete REST API from scratch using Node.js and Express
+- Implementing secure user authentication with JWT tokens
+- Connecting frontend (React) with backend API using Axios
+- Database design and operations with MongoDB
+- State management using Redux
+- Creating a responsive UI with Tailwind CSS
+
 ## ✨ Features
 
 - 🔐 User authentication (Sign up & Login)
@@ -75,7 +86,6 @@ snapnotes/
    ```
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_secret_key
-   PORT=5000
    ```
    
    Start the backend server:
