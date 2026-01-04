@@ -14,7 +14,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
   const editNote = async () => {
     const noteId = noteData._id;
     try {
-      const response = await axios.put("http://localhost:3000/api/notes/edit/" + noteId,
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/notes/edit/${noteId}`,
        { title, content, tags },
        { withCredentials: true }
       );
@@ -36,7 +36,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
 
   const addNewNote = async () => {
      try {
-      const response = await axios.post("http://localhost:3000/api/notes/add",
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/notes/add`,
        { title, content, tags },
        { withCredentials: true }
       );

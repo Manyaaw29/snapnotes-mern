@@ -42,7 +42,7 @@ const Home = () => {
 
   const getAllNotes = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/notes/all", {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/notes/all`, {
         withCredentials: true,
       });
       if (response.data.success === false) {
@@ -68,7 +68,7 @@ const Home = () => {
     const noteId = data._id;
     try {
       const response = await axios.delete(
-        "http://localhost:3000/api/notes/delete/" + noteId,
+        `${import.meta.env.VITE_API_URL}/api/notes/delete/${noteId}`,
         { withCredentials: true }
       );
       if (response.data.success === false) {
@@ -87,7 +87,7 @@ const Home = () => {
   const onSearchNote = async (query) => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/notes/search",
+          `${import.meta.env.VITE_API_URL}/api/notes/search`,
           { 
             params: { query },
             withCredentials: true 
@@ -115,7 +115,7 @@ const Home = () => {
     const noteId= noteData._id;
     try {
       const response = await axios.put(
-        "http://localhost:3000/api/notes/updateNotePin/" + noteId,
+        `${import.meta.env.VITE_API_URL}/api/notes/updateNotePin/${noteId}`,
         { isPinned: !noteData.isPinned },
         { withCredentials: true }
       );

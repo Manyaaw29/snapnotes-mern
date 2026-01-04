@@ -37,7 +37,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/signup",
+        `${import.meta.env.VITE_API_URL}/api/auth/signup`,
         { username: name, email, password },
         { withCredentials: true }
 
@@ -59,7 +59,7 @@ const Signup = () => {
   };
   return (
     <div className="flex h-screen">
-      {/* Left Side - Signup Form */}
+      
       <div className="w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-purple-50">
         <div className="w-96 px-10 py-12 bg-white rounded-2xl shadow-2xl border border-purple-100">
           <form onSubmit={handleSignup}>
