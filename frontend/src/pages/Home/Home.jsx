@@ -177,7 +177,7 @@ const Home = () => {
           setOpenAddEditModal({ isOpen: true, type: "add", data: null })
         }
       >
-        <MdAdd className="text-[24px] text-white" />
+        <MdAdd className="text-[20px] text-white" />
       </button>
 
       <Modal

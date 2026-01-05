@@ -93,7 +93,7 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Decorative Panel - Hidden on Mobile */}
+     
       <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 items-center justify-center overflow-hidden">
         <div className="text-center text-white px-6 md:px-8 lg:px-12 max-w-lg">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 lg:mb-4">📝 snapNotes</h1>

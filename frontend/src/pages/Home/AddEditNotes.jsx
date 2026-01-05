@@ -79,7 +79,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
         className="w-9 h-9 rounded-full flex items-center justify-center absolute -top-3 -right-3 md:-top-5 md:-right-5 bg-red-500 hover:bg-red-600 transition-colors shadow-lg"
         onClick={onClose}
       >
-        <MdClose className="text-base text-white" />
+        <MdClose className="text-sm text-white" />
       </button>
       
       <div className="mb-4 md:mb-6">
