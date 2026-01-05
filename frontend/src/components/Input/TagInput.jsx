@@ -30,7 +30,7 @@ const TagInput = ({ tags, setTags }) => {
           {tags.map((tag, index) => (
             <span
               key={index}
-              className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-slate-900 bg-slate-100 px-2 md:px-3 py-2 md:py-3 rounded"
+              className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-slate-900 dark:text-gray-200 bg-slate-100 dark:bg-gray-700 px-2 md:px-3 py-2 md:py-3 rounded"
             >
               #{tag}
               <button
@@ -39,7 +39,7 @@ const TagInput = ({ tags, setTags }) => {
                 }}
                 className="flex items-center justify-center"
               >
-                <MdClose className="text-xs text-slate-500 hover:text-red-600" />
+                <MdClose className="text-xs text-slate-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400" />
               </button>
             </span>
           ))}
@@ -49,16 +49,16 @@ const TagInput = ({ tags, setTags }) => {
         <input
           type="text "
           value={inputValue}
-          className="text-xs md:text-sm bg-transparent border border-slate-300 px-3 py-2 rounded outline-none flex-1"
+          className="text-xs md:text-sm bg-transparent dark:bg-gray-700 dark:text-white border border-slate-300 dark:border-gray-600 px-3 py-2 rounded outline-none flex-1 dark:placeholder-gray-400"
           placeholder="Add tags..."
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
         ></input>
         <button
-          className="w-9 h-9 flex items-center justify-center rounded border border-blue-700 hover:bg-blue-700 transition-all flex-shrink-0"
+          className="w-9 h-9 flex items-center justify-center rounded border border-blue-700 dark:border-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 transition-all flex-shrink-0"
           onClick={() => addNewTag()}
         >
-          <MdAdd className="text-lg text-blue-700 hover:text-white" />
+          <MdAdd className="text-lg text-blue-700 dark:text-blue-400 hover:text-white" />
         </button>
       </div>
     </div>

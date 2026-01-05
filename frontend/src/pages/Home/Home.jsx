@@ -132,7 +132,7 @@ const Home = () => {
   return (
     <>
       <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch} />
-      <div className="px-4 md:px-6 lg:px-8 pt-6 md:pt-10 pb-20 min-h-screen bg-gradient-to-br from-slate-100 to-blue-100 transition-colors duration-300">
+      <div className="px-4 md:px-6 lg:px-8 pt-6 md:pt-10 pb-20 min-h-screen bg-gradient-to-br from-slate-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       {allNotes.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mt-6 md:mt-10">
           {allNotes.map((note) => (
@@ -189,7 +189,7 @@ const Home = () => {
           },
         }}
         contentLabel=""
-        className="w-[95%] sm:w-[85%] md:w-[65%] lg:w-[45%] max-h-[90vh] md:max-h-[85vh] bg-white rounded-2xl mx-auto mt-4 md:mt-14 p-4 md:p-8 overflow-scroll shadow-2xl border border-gray-200"
+        className="w-[95%] sm:w-[85%] md:w-[65%] lg:w-[45%] max-h-[90vh] md:max-h-[85vh] bg-white dark:bg-gray-800 rounded-2xl mx-auto mt-4 md:mt-14 p-4 md:p-8 overflow-scroll shadow-2xl border border-gray-200 dark:border-gray-700"
       >
         <AddEditNotes
           onClose={() =>
