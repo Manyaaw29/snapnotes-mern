@@ -25,6 +25,7 @@ A simple and elegant note-taking application where you can create, edit, search,
 - 📌 Pin important notes to the top
 - 🔍 Search notes by title or tags
 - 🗑️ Delete notes you no longer need
+- 🌙 Dark mode toggle with theme persistence
 - 📱 Clean and responsive UI
 
 ## 🛠️ Built With
@@ -75,7 +76,8 @@ snapnotes/
 4. **Add Tags** - Organize notes with tags
 5. **Pin Notes** - Keep important notes at the top
 6. **Search** - Find notes quickly by title or content
-7. **Edit/Delete** - Manage your notes easily
+7. **Dark Mode** - Toggle between light and dark themes using the 🌙/☀️ button
+8. **Edit/Delete** - Manage your notes easily
 
 ## 🔒 Authentication
 
