@@ -82,7 +82,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
 
 
 
-        <MdClose className="text-md text-white" />
+        <MdClose className="text-lg text-white" />
       </button>
       
       <div className="mb-4 md:mb-6">

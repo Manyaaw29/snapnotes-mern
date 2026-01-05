@@ -24,7 +24,7 @@ const NoteCard = ({
           </span>
         </div>
         <MdOutlinePushPin
-          className={`text-md cursor-pointer transition ${
+          className={`text-lg cursor-pointer transition ${
             isPinned ? "text-amber-500" : "text-slate-400 hover:text-amber-500"
           }`}
           onClick={onPinNote}
@@ -45,11 +45,11 @@ const NoteCard = ({
 
         <div className="flex items-center gap-2 md:gap-3">
           <MdCreate
-            className="text-md text-gray-600 hover:text-green-600 cursor-pointer transition"
+            className="text-lg text-gray-600 hover:text-green-600 cursor-pointer transition"
             onClick={onEdit}
           />
           <MdDelete
-            className="text-md text-gray-600 hover:text-red-600 cursor-pointer transition"
+            className="text-lg text-gray-600 hover:text-red-600 cursor-pointer transition"
             onClick={onDelete}
           />
         </div>

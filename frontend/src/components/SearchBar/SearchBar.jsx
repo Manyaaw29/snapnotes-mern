@@ -27,12 +27,12 @@ const SearchBar = (props) => {
       />
       {value && (
         <IoMdClose 
-          className='text-slate-400 hover:text-black mr-2 md:mr-3 cursor-pointer text-md transition flex-shrink-0' 
+          className='text-slate-400 hover:text-black mr-2 md:mr-3 cursor-pointer text-lg transition flex-shrink-0' 
           onClick={onClearSearch}
         />
       )}
       <FaMagnifyingGlass 
-        className='text-slate-500 text-md cursor-pointer hover:text-black mr-2 md:mr-3 transition flex-shrink-0' 
+        className='text-slate-500 text-lg cursor-pointer hover:text-black mr-2 md:mr-3 transition flex-shrink-0' 
         onClick={handleSearch}
       />
     </div>
