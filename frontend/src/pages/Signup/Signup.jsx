@@ -105,11 +105,11 @@ const Signup = () => {
       </div>
 
       {/* Decorative Panel - Hidden on Mobile */}
-      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 items-center justify-center">
-        <div className="text-center text-white px-8 lg:px-12">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-3 lg:mb-4">📝 snapNotes</h1>
-          <p className="text-lg lg:text-xl mb-6 lg:mb-8">Organize your thoughts, one note at a time</p>
-          <div className="text-6xl lg:text-7xl">🚀</div>
+      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 items-center justify-center overflow-hidden">
+        <div className="text-center text-white px-6 md:px-8 lg:px-12 max-w-lg">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 lg:mb-4">📝 snapNotes</h1>
+          <p className="text-base md:text-lg lg:text-xl mb-6 lg:mb-8">Organize your thoughts, one note at a time</p>
+          <div className="text-5xl md:text-6xl lg:text-7xl">🚀</div>
         </div>
       </div>
     </div>

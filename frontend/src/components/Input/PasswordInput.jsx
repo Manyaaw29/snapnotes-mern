@@ -13,7 +13,19 @@ const PasswordInput = ({value, onChange,placeholder}) => {
       className='w-full text-sm bg-transparent py-3 mr-3 outline-none'
       />
 
-      {isShowPassword ? (<FaRegEye size={20} className='text-[#2b85ff] cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center' onClick={() =>toggleShowPassword()} />) : (<FaRegEyeSlash size={20} className='text-slate-400 cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center' onClick={() =>toggleShowPassword()} />)}
+      {isShowPassword ? (
+        <FaRegEye 
+          size={18} 
+          className='text-[#2b85ff] cursor-pointer hover:text-blue-600 transition flex-shrink-0' 
+          onClick={() => toggleShowPassword()} 
+        />
+      ) : (
+        <FaRegEyeSlash 
+          size={18} 
+          className='text-slate-400 cursor-pointer hover:text-slate-600 transition flex-shrink-0' 
+          onClick={() => toggleShowPassword()} 
+        />
+      )}
     </div>
   )
 }
