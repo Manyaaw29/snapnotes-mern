@@ -54,13 +54,13 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen">
       
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-0">
-        <div className="w-full max-w-md md:w-96 px-6 md:px-10 py-8 md:py-12 bg-white rounded-2xl shadow-2xl border border-blue-100">
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 px-4 py-8 md:p-8">
+        <div className="w-full max-w-md px-5 py-6 md:px-10 md:py-12 bg-white rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl border border-blue-100">
           <form onSubmit={handleLogin}>
-            <h2 className="text-3xl font-bold mb-2 text-gray-800"> Welcome Back! </h2>
-            <p className="text-gray-600 mb-7">Login to access your notes</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-1 md:mb-2 text-gray-800">Welcome Back!</h2>
+            <p className="text-sm md:text-base text-gray-600 mb-5 md:mb-7">Login to access your notes</p>
             
             <input
               type="text"
@@ -74,20 +74,18 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {error && <p className="text-sm text-red-500 pb-1"> {error} </p>}
+            {error && <p className="text-xs md:text-sm text-red-500 pb-1">{error}</p>}
 
-            <button type="submit" className="btn-primary ">
-              Login{" "}
+            <button type="submit" className="btn-primary min-h-[48px]">
+              Login
             </button>
 
-            <p className="text-sm text-center mt-4">
-              {" "}
-              Don't have an account ? {"  "}
+            <p className="text-xs md:text-sm text-center mt-3 md:mt-4">
+              Don't have an account?{" "}
               <Link
                 to="/signup"
                 className="font-medium text-[#2b85ff] underline"
               >
-                {" "}
                 Create an account
               </Link>
             </p>
@@ -95,12 +93,12 @@ const Login = () => {
         </div>
       </div>
 
-     
-      <div className="w-1/2 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center">
-        <div className="text-center text-white px-12">
-          <h1 className="text-5xl font-bold mb-4">📝 snapNotes</h1>
-          <p className="text-xl mb-8">Your personal note-taking companion</p>
-          <div className="text-7xl">✍️</div>
+      {/* Decorative Panel - Hidden on Mobile */}
+      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 items-center justify-center">
+        <div className="text-center text-white px-8 lg:px-12">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-3 lg:mb-4">📝 snapNotes</h1>
+          <p className="text-lg lg:text-xl mb-6 lg:mb-8">Your personal note-taking companion</p>
+          <div className="text-6xl lg:text-7xl">✍️</div>
         </div>
       </div>
     </div>

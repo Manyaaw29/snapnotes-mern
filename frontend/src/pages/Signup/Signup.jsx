@@ -58,13 +58,13 @@ const Signup = () => {
     }
   };
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen">
       
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-purple-50 p-4 md:p-0">
-        <div className="w-full max-w-md md:w-96 px-6 md:px-10 py-8 md:py-12 bg-white rounded-2xl shadow-2xl border border-purple-100">
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-purple-50 px-4 py-8 md:p-8">
+        <div className="w-full max-w-md px-5 py-6 md:px-10 md:py-12 bg-white rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl border border-purple-100">
           <form onSubmit={handleSignup}>
-            <h2 className="text-3xl font-bold mb-2 text-gray-800"> Get Started! </h2>
-            <p className="text-gray-600 mb-7">Create your account to begin</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-1 md:mb-2 text-gray-800">Get Started!</h2>
+            <p className="text-sm md:text-base text-gray-600 mb-5 md:mb-7">Create your account to begin</p>
             
             <input
               type="text"
@@ -85,21 +85,18 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {Error && <p className="text-sm text-red-500 pb-1"> {Error} </p>}
+            {Error && <p className="text-xs md:text-sm text-red-500 pb-1">{Error}</p>}
 
-            <button type="submit" className="btn-primary ">
-              {" "}
-              Sign Up{" "}
+            <button type="submit" className="btn-primary min-h-[48px]">
+              Sign Up
             </button>
 
-            <p className="text-sm text-center mt-4">
-              {" "}
-              Already have an account? {"  "}
+            <p className="text-xs md:text-sm text-center mt-3 md:mt-4">
+              Already have an account?{" "}
               <Link
                 to="/login"
                 className="font-medium text-[#2b85ff] underline"
               >
-                {" "}
                 Login
               </Link>
             </p>
@@ -107,11 +104,12 @@ const Signup = () => {
         </div>
       </div>
 
+      {/* Decorative Panel - Hidden on Mobile */}
       <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 items-center justify-center">
-        <div className="text-center text-white px-12">
-          <h1 className="text-5xl font-bold mb-4">📝 snapNotes</h1>
-          <p className="text-xl mb-8">Organize your thoughts, one note at a time</p>
-          <div className="text-7xl">🚀</div>
+        <div className="text-center text-white px-8 lg:px-12">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-3 lg:mb-4">📝 snapNotes</h1>
+          <p className="text-lg lg:text-xl mb-6 lg:mb-8">Organize your thoughts, one note at a time</p>
+          <div className="text-6xl lg:text-7xl">🚀</div>
         </div>
       </div>
     </div>
