@@ -12,11 +12,11 @@ const SearchBar = (props) => {
   console.log("onClearSearch:", onClearSearch);
   
   return (
-    <div className='w-40 sm:w-60 md:w-80 flex items-center px-4 bg-slate-100 rounded-md mt-2'>
+    <div className='w-full md:w-80 flex items-center px-3 md:px-4 bg-slate-100 rounded-md mt-0 md:mt-2'>
       <input 
         type="text" 
-        placeholder="Search by title, content or tags..." 
-        className="w-full text-xs bg-transparent py-[14px] outline-none" 
+        placeholder="Search notes..." 
+        className="w-full text-xs md:text-sm bg-transparent py-3 md:py-[14px] outline-none" 
         value={value || ""} 
         onChange={onChange}
         onKeyDown={(e) => {
@@ -27,12 +27,12 @@ const SearchBar = (props) => {
       />
       {value && (
         <IoMdClose 
-          className='text-slate-400 hover:text-black mr-3 cursor-pointer' 
+          className='text-slate-400 hover:text-black mr-2 md:mr-3 cursor-pointer text-lg md:text-xl min-w-[44px] min-h-[44px] flex items-center justify-center' 
           onClick={onClearSearch}
         />
       )}
       <FaMagnifyingGlass 
-        className='text-slate-500 text-xl cursor-pointer hover:text-black mr-3' 
+        className='text-slate-500 text-lg md:text-xl cursor-pointer hover:text-black mr-2 md:mr-3 min-w-[44px] min-h-[44px] flex items-center justify-center' 
         onClick={handleSearch}
       />
     </div>

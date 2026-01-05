@@ -54,10 +54,10 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col md:flex-row h-screen">
       
-      <div className="w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="w-96 px-10 py-12 bg-white rounded-2xl shadow-2xl border border-blue-100">
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50 p-4 md:p-0">
+        <div className="w-full max-w-md md:w-96 px-6 md:px-10 py-8 md:py-12 bg-white rounded-2xl shadow-2xl border border-blue-100">
           <form onSubmit={handleLogin}>
             <h2 className="text-3xl font-bold mb-2 text-gray-800"> Welcome Back! </h2>
             <p className="text-gray-600 mb-7">Login to access your notes</p>

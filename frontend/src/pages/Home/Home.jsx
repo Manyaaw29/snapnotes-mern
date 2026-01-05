@@ -132,9 +132,9 @@ const Home = () => {
   return (
     <>
       <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch} />
-      <div className="px-8 pt-10 pb-20 min-h-screen bg-gradient-to-br from-slate-100 to-blue-100 transition-colors duration-300">
+      <div className="px-4 md:px-6 lg:px-8 pt-6 md:pt-10 pb-20 min-h-screen bg-gradient-to-br from-slate-100 to-blue-100 transition-colors duration-300">
       {allNotes.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mt-6 md:mt-10">
           {allNotes.map((note) => (
             <NoteCard
               key={note._id}
@@ -172,12 +172,12 @@ const Home = () => {
       </div>
 
       <button
-        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all absolute right-10 bottom-10 fixed "
+        className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all fixed right-4 md:right-10 bottom-6 md:bottom-10 z-50 min-w-[56px] min-h-[56px]"
         onClick={() =>
           setOpenAddEditModal({ isOpen: true, type: "add", data: null })
         }
       >
-        <MdAdd className="text-[32px] text-white" />
+        <MdAdd className="text-[28px] md:text-[32px] text-white" />
       </button>
 
       <Modal
@@ -189,7 +189,7 @@ const Home = () => {
           },
         }}
         contentLabel=""
-        className="w-[45%] max-md:w-[65%] max-sm:w-[85%] max-h-[85vh] bg-white rounded-2xl mx-auto mt-14 p-8 overflow-scroll shadow-2xl border border-gray-200"
+        className="w-[95%] sm:w-[85%] md:w-[65%] lg:w-[45%] max-h-[90vh] md:max-h-[85vh] bg-white rounded-2xl mx-auto mt-4 md:mt-14 p-4 md:p-8 overflow-scroll shadow-2xl border border-gray-200"
       >
         <AddEditNotes
           onClose={() =>

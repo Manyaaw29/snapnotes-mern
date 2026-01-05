@@ -58,10 +58,10 @@ const Signup = () => {
     }
   };
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col md:flex-row h-screen">
       
-      <div className="w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-purple-50">
-        <div className="w-96 px-10 py-12 bg-white rounded-2xl shadow-2xl border border-purple-100">
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-50 to-purple-50 p-4 md:p-0">
+        <div className="w-full max-w-md md:w-96 px-6 md:px-10 py-8 md:py-12 bg-white rounded-2xl shadow-2xl border border-purple-100">
           <form onSubmit={handleSignup}>
             <h2 className="text-3xl font-bold mb-2 text-gray-800"> Get Started! </h2>
             <p className="text-gray-600 mb-7">Create your account to begin</p>
@@ -107,7 +107,7 @@ const Signup = () => {
         </div>
       </div>
 
-      <div className="w-1/2 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 flex items-center justify-center">
+      <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 items-center justify-center">
         <div className="text-center text-white px-12">
           <h1 className="text-5xl font-bold mb-4">📝 snapNotes</h1>
           <p className="text-xl mb-8">Organize your thoughts, one note at a time</p>
