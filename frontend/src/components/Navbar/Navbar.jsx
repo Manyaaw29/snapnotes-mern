@@ -77,7 +77,6 @@ const onLogout = async () => {
           </h2>
         </Link>
 
-        {/* Desktop Search Bar & Dark Mode Toggle */}
         <div className="hidden md:flex items-center gap-3">
           <SearchBar
             value={searchQuery}
@@ -88,7 +87,6 @@ const onLogout = async () => {
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-lg bg-slate-700 dark:bg-gray-700 hover:bg-slate-600 dark:hover:bg-gray-600 transition-colors text-yellow-300 dark:text-yellow-400"
-            aria-label="Toggle dark mode"
           >
             {isDarkMode ? <MdLightMode className="text-xl" /> : <MdDarkMode className="text-xl" />}
           </button>
@@ -122,7 +120,6 @@ const onLogout = async () => {
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-slate-700 dark:bg-gray-700 hover:bg-slate-600 dark:hover:bg-gray-600 transition-colors text-yellow-300 dark:text-yellow-400"
-              aria-label="Toggle dark mode"
             >
               {isDarkMode ? <MdLightMode className="text-xl" /> : <MdDarkMode className="text-xl" />}
             </button>
