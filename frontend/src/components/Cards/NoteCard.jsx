@@ -43,7 +43,7 @@ const NoteCard = ({
           ))}
         </div>
 
-        <div className="flex items-center gap-2 md:gap-3">
+        <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
           <MdCreate
             className="text-lg text-gray-600 hover:text-green-600 cursor-pointer transition"
             onClick={onEdit}
