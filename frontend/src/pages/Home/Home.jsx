@@ -172,12 +172,12 @@ const Home = () => {
       </div>
 
       <button
-        className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all fixed right-4 md:right-10 bottom-6 md:bottom-10 z-50 min-w-[56px] min-h-[56px]"
+        className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 shadow-lg hover:shadow-xl transition-all fixed right-4 md:right-10 bottom-6 md:bottom-10 z-50"
         onClick={() =>
           setOpenAddEditModal({ isOpen: true, type: "add", data: null })
         }
       >
-        <MdAdd className="text-[28px] md:text-[32px] text-white" />
+        <MdAdd className="text-[24px] text-white" />
       </button>
 
       <Modal
