@@ -15,13 +15,13 @@ const PasswordInput = ({value, onChange,placeholder}) => {
 
       {isShowPassword ? (
         <FaRegEye 
-          size={18} 
+          size={16} 
           className='text-[#2b85ff] cursor-pointer hover:text-blue-600 transition flex-shrink-0' 
           onClick={() => toggleShowPassword()} 
         />
       ) : (
         <FaRegEyeSlash 
-          size={18} 
+          size={16} 
           className='text-slate-400 cursor-pointer hover:text-slate-600 transition flex-shrink-0' 
           onClick={() => toggleShowPassword()} 
         />
