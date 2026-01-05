@@ -63,7 +63,7 @@ const onLogout = async () => {
 
   return (
     <div className="bg-gradient-to-r from-slate-800 via-blue-900 to-slate-800 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl border-b border-blue-800/30 dark:border-gray-700 transition-colors duration-300">
-      {/* Desktop & Mobile Header */}
+    
       <div className="flex items-center justify-between px-4 md:px-8 py-3">
         <Link to="/" className="flex items-center gap-2 md:gap-3">
           <img 
@@ -92,12 +92,12 @@ const onLogout = async () => {
           </button>
         </div>
 
-        {/* Desktop Profile */}
+    
         <div className="hidden md:flex items-center gap-4">
           <ProfileInfo userInfo={userInfo} onLogout={onLogout} />
         </div>
 
-        {/* Mobile Hamburger */}
+     
         <button 
           className="md:hidden text-white text-2xl p-2 hover:bg-blue-800/50 rounded-lg transition"
           onClick={() => setShowMobileMenu(!showMobileMenu)}
@@ -106,7 +106,6 @@ const onLogout = async () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {showMobileMenu && (
         <div className="md:hidden bg-slate-800 dark:bg-gray-800 border-t border-blue-800/30 dark:border-gray-700 px-4 py-4 space-y-4">
           <SearchBar
