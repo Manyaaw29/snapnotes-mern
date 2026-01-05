@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
 
 const useDarkMode = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Get theme from localStorage or default to false (light mode)
-    const savedTheme = localStorage.getItem('darkMode');
-    return savedTheme === 'true';
-  });
+  // Always start in light mode (false)
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Force remove dark class on mount
+    document.documentElement.classList.remove('dark');
+  }, []);
 
   useEffect(() => {
     // Apply or remove dark class to document element
+    const root = document.documentElement;
     if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('darkMode', 'true');
+      root.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('darkMode', 'false');
+      root.classList.remove('dark');
     }
   }, [isDarkMode]);
 

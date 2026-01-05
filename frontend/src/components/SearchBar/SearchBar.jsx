@@ -3,13 +3,7 @@ import { FaMagnifyingGlass } from 'react-icons/fa6'
 import { IoMdClose } from 'react-icons/io'
 
 const SearchBar = (props) => {
-  console.log("SearchBar props:", props);
-  
   const { value, onChange, handleSearch, onClearSearch } = props;
-  
-  console.log("value:", value);
-  console.log("onChange:", onChange);
-  console.log("onClearSearch:", onClearSearch);
   
   return (
     <div className='w-full md:w-80 flex items-center px-3 md:px-4 bg-slate-100 dark:bg-gray-700 rounded-md mt-0 md:mt-2 border border-transparent dark:border-gray-600'>
